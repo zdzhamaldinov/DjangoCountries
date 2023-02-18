@@ -1,10 +1,8 @@
 import json
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseNotFound
-
-
-with open('country-by-languages.json') as f:
-    countries_list = json.load(f)
+from django.core.exceptions import ObjectDoesNotExist
+from MainApp.models import Country
 
 
 def home(request):
@@ -16,26 +14,26 @@ def home(request):
 
 
 def get_country(request,name):
-    for country in countries_list:
-        if country['country'] == name:
-            context = {
-                "country": country['country'],
-                "languages": ', '.join(country['languages']),
-            }
-            return render(request, "country.html", context)
-    return HttpResponseNotFound("NotFound")
+    try:
+        country = Country.objects.get(country=name)
+    except ObjectDoesNotExist:
+        return HttpResponseNotFound(f"Country with name={name} not found")
+    context = {
+        'country': country
+    }
+    return render(request, 'country.html', context)
 
 
 def get_countries_list(request):
     context = {
-        "countries_list": countries_list,
+        "countries_list": Country.objects.all(),
     }
     return render(request, "countries_list.html", context)
     
 def get_languages_list(request):
     languages_list = []
-    for country in countries_list:
-        languages_list += country['languages']
+    for country in Country.objects.all():
+        languages_list += country.languages.split(',')
     context = {
         "languages_list": languages_list,
     }
