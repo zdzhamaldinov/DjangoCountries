@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries list</title>
+</head>
+<body>
+<header>
+    / <a href="/">Home</a> / <a href="/countries-list/">Countries</a> / <a href="/languages-list/">Languages</a> /
+</header>
+<h2>Countries list</h2>
+<ol>
+	{% for country in countries_list %}
+    <li><a href="/country/{{ country.country }}">{{ country.country }}</a></li>
+    {% endfor %}
+</ol>
+</body>
+</html>

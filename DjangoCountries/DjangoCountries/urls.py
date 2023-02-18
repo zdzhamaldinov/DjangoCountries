@@ -19,4 +19,7 @@ from MainApp import views
 
 urlpatterns = [
 	path('', views.home),
+    path('country/<str:name>', views.get_country),
+    path('countries-list/', views.get_countries_list),
+    path('languages-list/', views.get_languages_list),
 ]
