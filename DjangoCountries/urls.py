@@ -18,6 +18,8 @@ from django.urls import path
 from MainApp import views
 
 urlpatterns = [
+    # TODO: используйте именованные url'ы
+    # TODO: используйте наследование шаблонов
 	path('', views.home),
     path('country/<str:name>', views.get_country),
     path('countries-list/', views.get_countries_list),
