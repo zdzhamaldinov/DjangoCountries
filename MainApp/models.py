@@ -1,5 +1,6 @@
 from django.db import models
 
+# TODO: форматируйте код согласно PEP-8
 class Language(models.Model):
    name = models.CharField(max_length=100)
    
