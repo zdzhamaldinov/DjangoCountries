@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{country}}</title>
+    <title>{{language}}</title>
 </head>
 <body>
 <header>
     / <a href="/">Home</a> / <a href="/countries-list/">Countries</a> / <a href="/languages-list/">Languages</a> /
 </header>
-	<h2>{{country}}</h2>
+	<h2>{{language}}</h2>
 	<ol>
-		{% for language in languages %}
-			<li>{{language.name}}</li>
+		{% for country in countries %}
+			<li>{{country.country}}</li>
 		{% endfor %}
 	</ol>
 </body>

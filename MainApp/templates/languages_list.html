@@ -11,7 +11,7 @@
 <h2>Languages list</h2>
 <ol>
 	{% for language in languages_list %}
-    <li>{{ language.name }}</li>
+		<li><a href="/language/{{ language.name }}">{{ language.name }}</a></li>
     {% endfor %}
 </ol>
 </body>
