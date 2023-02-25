@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Languages list</title>
-</head>
-<body>
-<header>
-    / <a href="/">Home</a> / <a href="/countries-list/">Countries</a> / <a href="/languages-list/">Languages</a> /
-</header>
-<h2>Languages list</h2>
-<ol>
-	{% for language in languages_list %}
-		<li><a href="/language/{{ language.name }}">{{ language.name }}</a></li>
-    {% endfor %}
-</ol>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+	<h2>Languages list</h2>
+	<ol>
+		{% for language in languages_list %}
+			<li><a href="{% url 'get_language' language.name %}">{{ language.name }}</a></li>
+		{% endfor %}
+	</ol>
+{% endblock %}
